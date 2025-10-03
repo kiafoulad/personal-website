@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fa">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -76,12 +76,12 @@
     <main>
       <section id="home" class="hero">
         <div class="avatar">
-          <!-- If you want to use a real photo, replace src with your image file -->
-          <img src="https://avatars.githubusercontent.com/u/0?v=4" alt="avatar" />
+          <!-- Replace src with your own photo file uploaded to the repo (e.g., Resume_Photo.JPG) -->
+          <img src="Resume_Photo.JPG" alt="avatar" />
         </div>
         <div>
-          <h1>سلام — کیاوش فولاد</h1>
-          <p class="lead">دانشجوی علوم کامپیوتر | علاقه‌مند به یادگیری ماشین و مهندسی داده</p>
+          <h1>Hello — I'm Kiavash Foulad</h1>
+          <p class="lead">Computer Science student | Interested in Machine Learning and Data Engineering</p>
         </div>
       </section>
 
@@ -89,7 +89,7 @@
         <h3>About Me</h3>
         <div class="grid">
           <div>
-            <p id="about-text">[A short bio will appear here — populated from your CV or edit manually]</p>
+            <p id="about-text">Undergraduate Computer Science student at Amirkabir University (2021–2026). Passionate about machine learning, data engineering, and algorithms. "Continuous learning is the best algorithm for growth."</p>
             <p><a id="cv-link" href="#" download>Download CV (PDF)</a></p>
           </div>
           <div>
@@ -144,17 +144,14 @@
       });
     });
 
-    // --- Populate About/Experience from a small embedded dataset extracted from CV ---
-    // NOTE: Replace or update this block if you want to change displayed text.
-    const aboutText = `دانشجوی کارشناسی علوم کامپیوتر در Amirkabir University (2021–2026). علاقه‌مند به یادگیری ماشین، مهندسی داده و الگوریتم‌ها. "Continuous learning is the best algorithm for personal and professional growth."`;
+    // --- Populate About/Experience ---
     const skills = ['Python','Machine Learning','Data Science','Pandas','NumPy','Scikit-learn','Matplotlib'];
     const experiences = [
       {title:'B.Sc. in Computer Science — Amirkabir University', date:'Sept 2021 – June 2026', desc:''},
-      {title:'University Projects — K-Means + Genetic Algorithm', date:'University Project', desc:'Implemented GA from scratch to optimize k-means centroids (Python, Pandas, NumPy).'},
-      {title:'ML Pipeline for Mental Illness Diagnosis Prediction', date:'University Project', desc:'End-to-end pipeline, SMOTE handling, classifier comparison (RandomForest, SVM, KNN).'}
+      {title:'University Project — K-Means + Genetic Algorithm', date:'Academic Project', desc:'Implemented GA from scratch to optimize k-means centroids (Python, Pandas, NumPy).'},
+      {title:'ML Pipeline for Mental Illness Diagnosis Prediction', date:'Academic Project', desc:'End-to-end pipeline, SMOTE handling, classifier comparison (RandomForest, SVM, KNN).'}
     ];
 
-    document.getElementById('about-text').innerText = aboutText;
     const skillsEl = document.getElementById('skills');
     skills.forEach(s=>{const sp=document.createElement('span');sp.className='skill';sp.innerText=s;skillsEl.appendChild(sp)});
     const expEl = document.getElementById('experience-list');
@@ -186,7 +183,7 @@
     }
     loadProjects();
 
-    // --- CV link: points to a file name in the repo root. Upload your PDF to the repo and it will be downloadable. ---
+    // CV link
     const cvLink = document.getElementById('cv-link');
     cvLink.href = './Kiavash_Foulad.pdf';
 
