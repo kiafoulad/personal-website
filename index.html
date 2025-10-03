@@ -9,172 +9,177 @@
   <style>
     :root {
       --bg: #ffffff;
+      --page-bg: #f9fafb; /* New: A very light gray for the page background */
+      --border-color: #e5e7eb; /* New: A consistent border color */
       --muted: #6b7280;
       --accent: #111827;
-      --card: #f8fafc;
+      --card-bg: var(--bg);
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     html, body {
-      height: 100%;
       margin: 0;
+      padding: 0;
       font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background-color: var(--page-bg); /* Use the new page background */
     }
     body {
-      background: var(--bg);
       color: var(--accent);
-      line-height: 1.5;
+      line-height: 1.6; /* Slightly increased line-height for readability */
     }
     .container {
       max-width: 900px;
       margin: 0 auto;
       padding: 24px;
     }
+
+    /* --- Header Styling --- */
     header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
+      padding-bottom: 16px; /* Spacing below the header */
+      border-bottom: 1px solid var(--border-color); /* Separator line */
+      margin-bottom: 32px;
     }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    .brand { display: flex; align-items: center; gap: 12px; }
     .logo {
       width: 44px;
       height: 44px;
-      border-radius: 8px;
-      background: #111827;
-      color: #fff;
+      border-radius: 50%; /* Make logo background circular */
+      background: var(--accent);
+      color: var(--bg);
       display: grid;
       place-items: center;
       font-weight: 700;
     }
-    .font-bold { font-weight: 700; }
-    .subtitle {
-      font-size: 12px;
-      color: var(--muted);
-    }
-    nav { display: flex; gap: 12px; }
+    .font-bold { font-weight: 600; } /* Adjusted weight for modern look */
+    .subtitle { font-size: 13px; color: var(--muted); }
+    nav { display: flex; gap: 8px; }
     nav a {
       text-decoration: none;
       color: var(--muted);
-      padding: 8px;
-      border-radius: 6px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: color 0.2s ease, background-color 0.2s ease; /* Smooth transition */
     }
     nav a.active, nav a:hover {
       color: var(--accent);
-      background: var(--card);
+      background-color: #f3f4f6; /* A lighter hover effect */
     }
     .hamburger {
       display: none;
       border: 0;
       background: transparent;
-      font-size: 20px;
+      font-size: 24px;
       cursor: pointer;
     }
+
+    /* --- Hero Section --- */
     .hero {
-      display: grid;
-      grid-template-columns: 72px 1fr;
-      gap: 16px;
+      display: flex; /* Changed to flex for better alignment */
+      flex-direction: column;
       align-items: center;
-      margin: 36px 0;
+      text-align: center;
+      margin: 48px 0;
     }
     .avatar {
-      width: 72px;
-      height: 72px;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #e6eef5;
-      display: grid;
-      place-items: center;
+      width: 96px; /* Larger avatar */
+      height: 96px;
+      border-radius: 50%; /* Circular avatar */
+      border: 3px solid var(--bg);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 16px;
     }
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    h1 { margin: 0; font-size: 20px; }
-    p.lead {
-      margin: 6px 0 0;
-      color: var(--muted);
-    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+    h1 { margin: 0; font-size: 32px; font-weight: 700; }
+    p.lead { margin: 8px 0 0; color: var(--muted); font-size: 18px; max-width: 600px; }
+
+    /* --- Section Card Styling (The main improvement) --- */
     section {
-      margin: 28px 0;
-      padding: 18px;
-      border-radius: 10px;
-      background: #fff;
-      box-shadow: 0 1px 0 rgba(16, 24, 40, 0.04);
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px; /* Softer corners */
+      padding: 32px; /* More internal spacing */
+      margin-bottom: 32px; /* More space between sections */
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05); /* Professional soft shadow */
     }
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
+    section h3 {
+      font-size: 22px;
+      margin: 0 0 24px 0; /* More space below the heading */
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-color);
     }
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
     .skill {
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: var(--card);
-      font-size: 13px;
-    }
-    .experience-item { margin-bottom: 12px; }
-    .experience-item-date {
-        color: var(--muted);
-        font-size: 14px;
-    }
-    .experience-item-desc {
-        margin-top: 6px;
-        color: var(--muted);
-    }
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-    .proj {
-      padding: 12px;
+      padding: 8px 14px;
       border-radius: 8px;
-      background: var(--card);
-    }
-    .proj h4 { margin: 0 0 6px; }
-    .proj p {
-      margin: 0 0 8px;
-      color: var(--muted);
+      background: var(--page-bg);
       font-size: 14px;
+      font-weight: 500;
+      border: 1px solid var(--border-color);
+      transition: background-color 0.2s ease;
     }
+    .skill:hover { background-color: #e5e7eb; }
+
+    /* --- Experience & Projects --- */
+    .experience-item { margin-bottom: 24px; }
+    .experience-item:last-child { margin-bottom: 0; }
+    .experience-item-date { color: var(--muted); font-size: 14px; }
+    .experience-item-desc { margin-top: 6px; color: var(--muted); }
+    
+    .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .proj {
+      background-color: var(--page-bg);
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effects */
+    }
+    .proj:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -4px rgba(0, 0, 0, 0.07);
+    }
+    .proj h4 { margin: 0 0 8px; font-size: 16px; }
+    .proj p { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
     .proj a {
-      font-size: 13px;
+      font-size: 14px;
       text-decoration: none;
       color: var(--accent);
+      font-weight: 500;
     }
-    footer {
-      margin: 28px 0;
-      text-align: center;
-      color: var(--muted);
-      font-size: 14px;
+    .proj a:hover { text-decoration: underline; }
+    .fetch-info {
+        text-align: center;
+        margin-top: 24px;
+        color: var(--muted);
+        font-size: 13px;
     }
+
+    footer { padding: 32px 0; text-align: center; color: var(--muted); font-size: 14px; }
+
+    /* --- Responsive Design --- */
     @media (max-width: 720px) {
       .grid, .projects { grid-template-columns: 1fr; }
-      .hero { grid-template-columns: 72px 1fr; }
+      section { padding: 24px; }
+      h1 { font-size: 28px; }
+      p.lead { font-size: 16px; }
       .hamburger { display: block; }
       nav {
         display: none;
         flex-direction: column;
         position: absolute;
         top: 80px;
-        left: 0;
-        right: 0;
-        margin: 0 24px;
-        background-color: var(--bg);
+        left: 24px;
+        right: 24px;
+        background-color: var(--card-bg);
         padding: 12px;
         border-radius: 8px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        border: 1px solid var(--border-color);
+        box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1);
         z-index: 10;
       }
       nav a { padding: 12px; }
@@ -204,13 +209,13 @@
     </header>
 
     <main>
-      <section id="home" class="hero">
+      <section id="home" class="hero" style="border: none; box-shadow: none; background: none; padding: 0;">
         <div class="avatar">
           <img src="Resume_Photo.JPG" alt="avatar" />
         </div>
         <div>
           <h1>Hello — I'm Kiavash Foulad</h1>
-          <p class="lead">Computer Science student | Interested in Machine Learning and Data Engineering</p>
+          <p class="lead">Computer Science student passionate about Machine Learning and Data Engineering.</p>
         </div>
       </section>
 
@@ -218,28 +223,25 @@
         <h3>About Me</h3>
         <div class="grid">
           <div>
-            <p id="about-text">Undergraduate Computer Science student at Amirkabir University (2021–2026). Passionate about machine learning, data engineering, and algorithms. "Continuous learning is the best algorithm for growth."</p>
+            <p>Undergraduate Computer Science student at Amirkabir University (2021–2026). Passionate about machine learning, data engineering, and algorithms. "Continuous learning is the best algorithm for growth."</p>
             <p><a href="./Kiavash_Foulad.pdf" download>Download CV (PDF)</a></p>
           </div>
           <div>
             <h4>Skills</h4>
-            <div class="skills" id="skills">
-            </div>
+            <div class="skills" id="skills"></div>
           </div>
         </div>
       </section>
 
       <section id="experience">
         <h3>Experience & Education</h3>
-        <div id="experience-list">
-        </div>
+        <div id="experience-list"></div>
       </section>
 
       <section id="projects">
         <h3>Projects</h3>
-        <div class="projects" id="projects-grid">
-        </div>
-        <p style="margin-top:10px;color:var(--muted);font-size:13px">Projects are fetched live from GitHub (username: <strong>kiafoulad</strong>)</p>
+        <div class="projects" id="projects-grid"></div>
+        <p class="fetch-info">Projects are fetched live from GitHub (username: <strong>kiafoulad</strong>)</p>
       </section>
 
       <section id="contact">
@@ -293,7 +295,7 @@
       div.innerHTML = `
         <strong class="font-bold">${e.title}</strong>
         <div class="experience-item-date">${e.date}</div>
-        <div class="experience-item-desc">${e.desc}</div>
+        ${e.desc ? `<div class="experience-item-desc">${e.desc}</div>` : ''}
       `;
       expEl.appendChild(div);
     });
@@ -306,7 +308,7 @@
         const grid = document.getElementById('projects-grid');
         const filtered = repos.filter(r => !r.fork).slice(0, 6);
         if (filtered.length === 0) {
-          grid.innerHTML = '<p style="color:var(--muted)">No public repositories found.</p>';
+          grid.innerHTML = '<p>No public repositories found.</p>';
           return;
         }
         filtered.forEach(r => {
@@ -317,7 +319,7 @@
           grid.appendChild(card);
         });
       } catch (err) {
-        document.getElementById('projects-grid').innerHTML = `<p style="color:var(--muted)">Failed to load projects: ${err.message}</p>`;
+        document.getElementById('projects-grid').innerHTML = `<p>Failed to load projects: ${err.message}</p>`;
       }
     }
     loadProjects();
