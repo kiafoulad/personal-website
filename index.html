@@ -74,8 +74,6 @@
       font-size: 20px;
       cursor: pointer;
     }
-
-    /* Hero */
     .hero {
       display: grid;
       grid-template-columns: 72px 1fr;
@@ -102,8 +100,6 @@
       margin: 6px 0 0;
       color: var(--muted);
     }
-
-    /* sections */
     section {
       margin: 28px 0;
       padding: 18px;
@@ -127,8 +123,6 @@
       background: var(--card);
       font-size: 13px;
     }
-
-    /* Experience */
     .experience-item { margin-bottom: 12px; }
     .experience-item-date {
         color: var(--muted);
@@ -138,8 +132,6 @@
         margin-top: 6px;
         color: var(--muted);
     }
-
-    /* projects */
     .projects {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -161,15 +153,12 @@
       text-decoration: none;
       color: var(--accent);
     }
-
     footer {
       margin: 28px 0;
       text-align: center;
       color: var(--muted);
       font-size: 14px;
     }
-
-    /* responsive */
     @media (max-width: 720px) {
       .grid, .projects { grid-template-columns: 1fr; }
       .hero { grid-template-columns: 72px 1fr; }
@@ -235,7 +224,7 @@
           <div>
             <h4>Skills</h4>
             <div class="skills" id="skills">
-              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -243,13 +232,13 @@
       <section id="experience">
         <h3>Experience & Education</h3>
         <div id="experience-list">
-          </div>
+        </div>
       </section>
 
       <section id="projects">
         <h3>Projects</h3>
         <div class="projects" id="projects-grid">
-          </div>
+        </div>
         <p style="margin-top:10px;color:var(--muted);font-size:13px">Projects are fetched live from GitHub (username: <strong>kiafoulad</strong>)</p>
       </section>
 
@@ -267,25 +256,21 @@
   </div>
 
   <script>
-    // --- Basic interactions ---
     document.getElementById('hamb').addEventListener('click', () => {
       const nav = document.getElementById('nav');
       nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
     });
 
-    // Smooth scroll + active link
     document.querySelectorAll('nav a').forEach(a => {
       a.addEventListener('click', (e) => {
         document.querySelectorAll('nav a').forEach(x => x.classList.remove('active'));
         a.classList.add('active');
-        // Hide mobile nav on click
         if (window.innerWidth <= 720) {
             document.getElementById('nav').style.display = 'none';
         }
       });
     });
 
-    // --- Populate About/Experience ---
     const skills = ['Python', 'Machine Learning', 'Data Science', 'Pandas', 'NumPy', 'Scikit-learn', 'Matplotlib'];
     const experiences = [
       { title: 'B.Sc. in Computer Science — Amirkabir University', date: 'Sept 2021 – June 2026', desc: '' },
@@ -313,7 +298,6 @@
       expEl.appendChild(div);
     });
 
-    // --- Projects: fetch from GitHub API ---
     async function loadProjects() {
       try {
         const resp = await fetch('https://api.github.com/users/kiafoulad/repos?per_page=8&sort=updated');
@@ -337,7 +321,6 @@
       }
     }
     loadProjects();
-
   </script>
 </body>
 </html>
