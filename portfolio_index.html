@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="fa">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kiavash Foulad — Portfolio</title>
+  <meta name="description" content="Minimal personal portfolio of Kiavash Foulad" />
+  <style>
+    :root{--bg:#ffffff;--muted:#6b7280;--accent:#111827;--card:#f8fafc}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto,'Helvetica Neue',Arial}
+    body{background:var(--bg);color:var(--accent);line-height:1.5}
+    .container{max-width:900px;margin:0 auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;border-radius:8px;background:#111827;color:#fff;display:grid;place-items:center;font-weight:700}
+    nav{display:flex;gap:12px}
+    nav a{text-decoration:none;color:var(--muted);padding:8px;border-radius:6px}
+    nav a.active,nav a:hover{color:var(--accent);background:var(--card)}
+    .hamburger{display:none;border:0;background:transparent;font-size:20px}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:72px 1fr;gap:16px;align-items:center;margin:36px 0}
+    .avatar{width:72px;height:72px;border-radius:12px;overflow:hidden;background:#e6eef5;display:grid;place-items:center}
+    .avatar img{width:100%;height:100%;object-fit:cover}
+    h1{margin:0;font-size:20px}
+    p.lead{margin:6px 0 0;color:var(--muted)}
+
+    /* sections */
+    section{margin:28px 0;padding:18px;border-radius:10px;background:#fff;box-shadow:0 1px 0 rgba(16,24,40,0.04)}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .skills{display:flex;flex-wrap:wrap;gap:8px}
+    .skill{padding:6px 10px;border-radius:999px;background:var(--card);font-size:13px}
+
+    /* projects */
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .proj{padding:12px;border-radius:8px;background:var(--card)}
+    .proj h4{margin:0 0 6px}
+    .proj p{margin:0 0 8px;color:var(--muted);font-size:14px}
+    .proj a{font-size:13px;text-decoration:none;color:var(--accent)}
+
+    footer{margin:28px 0;text-align:center;color:var(--muted);font-size:14px}
+
+    /* responsive */
+    @media (max-width:720px){
+      .grid{grid-template-columns:1fr}
+      .projects{grid-template-columns:1fr}
+      nav{display:none}
+      .hamburger{display:block}
+      .hero{grid-template-columns:72px 1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">KF</div>
+        <div>
+          <div style="font-weight:700">Kiavash Foulad</div>
+          <div style="font-size:12px;color:var(--muted)">Computer Science Student</div>
+        </div>
+      </div>
+      <div>
+        <nav id="nav">
+          <a href="#home" class="active">Home</a>
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button class="hamburger" id="hamb">☰</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="avatar">
+          <!-- If you want to use a real photo, replace src with your image file -->
+          <img src="https://avatars.githubusercontent.com/u/0?v=4" alt="avatar" />
+        </div>
+        <div>
+          <h1>سلام — کیاوش فولاد</h1>
+          <p class="lead">دانشجوی علوم کامپیوتر | علاقه‌مند به یادگیری ماشین و مهندسی داده</p>
+        </div>
+      </section>
+
+      <section id="about">
+        <h3>About Me</h3>
+        <div class="grid">
+          <div>
+            <p id="about-text">[A short bio will appear here — populated from your CV or edit manually]</p>
+            <p><a id="cv-link" href="#" download>Download CV (PDF)</a></p>
+          </div>
+          <div>
+            <h4>Skills</h4>
+            <div class="skills" id="skills">
+              <!-- JS will populate skills -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h3>Experience & Education</h3>
+        <div id="experience-list">
+          <!-- Filled from CV -->
+        </div>
+      </section>
+
+      <section id="projects">
+        <h3>Projects</h3>
+        <div class="projects" id="projects-grid">
+          <!-- Projects fetched from GitHub API -->
+        </div>
+        <p style="margin-top:10px;color:var(--muted);font-size:13px">Projects are fetched live from GitHub (username: <strong>kiafoulad</strong>)</p>
+      </section>
+
+      <section id="contact">
+        <h3>Contact</h3>
+        <p>Email: <a href="mailto:kiafoulad@gmail.com">kiafoulad@gmail.com</a></p>
+        <p>Phone: <a href="tel:09023525155">09023525155</a></p>
+        <p>Links: <a href="https://github.com/kiafoulad" target="_blank">GitHub</a> • <a href="https://linkedin.com/in/kiafoulad" target="_blank">LinkedIn</a> • <a href="https://www.homepage.com" target="_blank">Website</a></p>
+      </section>
+    </main>
+
+    <footer>
+      Built with HTML · CSS · JS — Hosted on GitHub Pages
+    </footer>
+  </div>
+
+  <script>
+    // --- Basic interactions ---
+    document.getElementById('hamb').addEventListener('click', ()=>{
+      const nav=document.getElementById('nav');
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    // Smooth scroll + active link
+    document.querySelectorAll('nav a').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        document.querySelectorAll('nav a').forEach(x=>x.classList.remove('active'));
+        a.classList.add('active');
+      });
+    });
+
+    // --- Populate About/Experience from a small embedded dataset extracted from CV ---
+    // NOTE: Replace or update this block if you want to change displayed text.
+    const aboutText = `دانشجوی کارشناسی علوم کامپیوتر در Amirkabir University (2021–2026). علاقه‌مند به یادگیری ماشین، مهندسی داده و الگوریتم‌ها. "Continuous learning is the best algorithm for personal and professional growth."`;
+    const skills = ['Python','Machine Learning','Data Science','Pandas','NumPy','Scikit-learn','Matplotlib'];
+    const experiences = [
+      {title:'B.Sc. in Computer Science — Amirkabir University', date:'Sept 2021 – June 2026', desc:''},
+      {title:'University Projects — K-Means + Genetic Algorithm', date:'University Project', desc:'Implemented GA from scratch to optimize k-means centroids (Python, Pandas, NumPy).'},
+      {title:'ML Pipeline for Mental Illness Diagnosis Prediction', date:'University Project', desc:'End-to-end pipeline, SMOTE handling, classifier comparison (RandomForest, SVM, KNN).'}
+    ];
+
+    document.getElementById('about-text').innerText = aboutText;
+    const skillsEl = document.getElementById('skills');
+    skills.forEach(s=>{const sp=document.createElement('span');sp.className='skill';sp.innerText=s;skillsEl.appendChild(sp)});
+    const expEl = document.getElementById('experience-list');
+    experiences.forEach(e=>{
+      const div=document.createElement('div');
+      div.style.marginBottom='12px';
+      div.innerHTML = `<strong>${e.title}</strong><div style="color:var(--muted);font-size:14px">${e.date}</div><div style="margin-top:6px;color:var(--muted)">${e.desc}</div>`;
+      expEl.appendChild(div);
+    });
+
+    // --- Projects: fetch from GitHub API ---
+    async function loadProjects(){
+      try{
+        const resp = await fetch('https://api.github.com/users/kiafoulad/repos?per_page=8&sort=updated');
+        if(!resp.ok) throw new Error('GitHub API error');
+        const repos = await resp.json();
+        const grid = document.getElementById('projects-grid');
+        const filtered = repos.filter(r=>!r.fork).slice(0,6);
+        if(filtered.length===0){ grid.innerHTML='<p style="color:var(--muted)">No public repositories found.</p>'; return; }
+        filtered.forEach(r=>{
+          const card=document.createElement('div');card.className='proj';
+          const desc = r.description ? r.description : 'No description provided.';
+          card.innerHTML = `<h4>${r.name}</h4><p>${desc}</p><a href="${r.html_url}" target="_blank">View on GitHub →</a>`;
+          grid.appendChild(card);
+        });
+      }catch(err){
+        document.getElementById('projects-grid').innerHTML = `<p style="color:var(--muted)">Failed to load projects: ${err.message}</p>`;
+      }
+    }
+    loadProjects();
+
+    // --- CV link: points to a file name in the repo root. Upload your PDF to the repo and it will be downloadable. ---
+    const cvLink = document.getElementById('cv-link');
+    cvLink.href = './Kiavash_Foulad.pdf';
+
+  </script>
+</body>
+</html>
